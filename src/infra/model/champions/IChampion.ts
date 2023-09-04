@@ -6,4 +6,9 @@ export interface IChampion {
   name: string;
   title: string;
   tags: string;
+  image: ChampionImage;
 };
+
+export interface ChampionImage {
+  full: string;
+}

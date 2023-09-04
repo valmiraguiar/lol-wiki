@@ -1,14 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ChampionsLayout from "./layout";
+import useChampions from "../../../../hooks/useChampions";
 
 const Champions : React.FC = () => {
+  const { 
+    champions, 
+    getChampionsList, 
+    loadingState
+  } = useChampions();
+
   useEffect(() => {
-    fetch('http://ddragon.leagueoflegends.com/cdn/13.17.1/data/pt_BR/champion.json');
-    
+    getChampionsList();    
   }, []);
 
   return (
-    <ChampionsLayout />
+    <ChampionsLayout championsData={champions ?? []} />
   );
 }
 

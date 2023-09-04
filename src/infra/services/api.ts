@@ -9,11 +9,12 @@ const api = axios.create({
 });
 
 api.interceptors.request.use(config => {
-  console.log('Data request -> \n', config.data);
-
   return config;
 });
 
-api.interceptors.response.use(response => response.data);
+api.interceptors.response.use(response => {
+  console.log(response.data)
+  return response;
+});
 
 export default api;

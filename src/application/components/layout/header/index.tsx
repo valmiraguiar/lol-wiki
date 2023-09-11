@@ -1,11 +1,11 @@
 import React from "react";
-import { Container } from "./styles";
+import { Container, StyledText } from "./styles";
 
 const Header: React.FC = () => {
 
   return (
     <Container>
-      <text>LOL WIKI</text>
+      <StyledText>LOL WIKI</StyledText>
     </Container>
   );
 };

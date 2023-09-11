@@ -10,7 +10,9 @@ const Champions : React.FC = () => {
   } = useChampions();
 
   useEffect(() => {
-    getChampionsList();    
+    getChampionsList();  
+    
+    // eslint-disable-next-line
   }, []);
 
   return (

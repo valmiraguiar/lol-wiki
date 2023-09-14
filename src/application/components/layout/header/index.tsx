@@ -5,7 +5,7 @@ const Header: React.FC = () => {
 
   return (
     <Container>
-      <StyledText>LOL WIKI</StyledText>
+      <StyledText>League of Legends Wiki</StyledText>
     </Container>
   );
 };

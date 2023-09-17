@@ -1,6 +1,6 @@
-import { useState } from "react";
-import ChampionsService from "../../infra/services/champions";
-import { IChampion } from "../../infra/model/champions/IChampion";
+import { useState } from 'react';
+import ChampionsService from '../../infra/services/champions';
+import { IChampion } from '../../infra/model/champions/IChampion';
 
 const useChampions = () => {
   const [champions, setChampions] = useState<IChampion[]>();
@@ -11,14 +11,14 @@ const useChampions = () => {
     try {
       setLoadingState('loading');
       const response = await service.fetchChampions();
-      setChampions(response.data)
+      setChampions(response.data);
 
       setLoadingState('success');
     } catch (error) {
       console.log('error');
     }
   };
-  
+
   return {
     loadingState,
     getChampionsList,

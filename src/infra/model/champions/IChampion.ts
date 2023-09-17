@@ -1,4 +1,3 @@
-
 export interface IChampion {
   version: string;
   id: string;
@@ -7,7 +6,7 @@ export interface IChampion {
   title: string;
   tags: string;
   image: ChampionImage;
-};
+}
 
 export interface ChampionImage {
   full: string;

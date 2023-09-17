@@ -1,15 +1,15 @@
-import { AxiosRequestConfig, AxiosResponse } from "axios";
-import { HttpClient, HttpRequest, HttpResponse } from "../HttpClient";
-import api from "../../services/api";
+import { AxiosRequestConfig, AxiosResponse } from 'axios';
+import { HttpClient, HttpRequest, HttpResponse } from '../HttpClient';
+import api from '../../services/api';
 
 export class AxiosHttpClient implements HttpClient {
-  request = async(
+  request = async (
     data: HttpRequest,
     config?: AxiosRequestConfig,
   ): Promise<HttpResponse> => {
     let axiosResponse: AxiosResponse;
 
-    try{
+    try {
       axiosResponse = await api.request({
         ...config,
         url: data.url,
@@ -22,6 +22,6 @@ export class AxiosHttpClient implements HttpClient {
     return {
       statusCode: axiosResponse.status,
       body: axiosResponse.data,
-    }
+    };
   };
 }

@@ -1,6 +1,6 @@
-import ChampionDetail from ".";
-import { PATH, NAME } from "../../../../routes/path";
-import { IAppRoute } from "../../../../routes/routes.types";
+import ChampionDetail from '.';
+import { PATH, NAME } from '../../../../routes/path';
+import { IAppRoute } from '../../../../routes/routes.types';
 
 const ChampionDetailRouter: IAppRoute = {
   Page: <ChampionDetail />,

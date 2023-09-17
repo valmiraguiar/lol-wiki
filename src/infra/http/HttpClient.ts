@@ -1,4 +1,4 @@
-import { AxiosResponse } from "axios";
+import { AxiosResponse } from 'axios';
 
 export type HttpRequest = {
   url: string;
@@ -9,8 +9,8 @@ export type HttpRequest = {
 export type HttpMethod = 'get';
 
 export interface HttpClient<R = object> {
-    request: (data: HttpRequest) => Promise<HttpResponse<R>>;
-};
+  request: (data: HttpRequest) => Promise<HttpResponse<R>>;
+}
 
 export type HttpResponse<T = object> = {
   statusCode: number;
@@ -24,4 +24,4 @@ export enum HTTP_STATUS_CODE {
   NOT_FOUND = 404,
   SERVER_ERROR = 500,
   GATEWAY_TIMEOUT = 502,
-};
+}

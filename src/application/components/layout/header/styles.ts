@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components';
 
 interface ContainerProps {
   width?: number;
@@ -17,7 +17,7 @@ export const Container = styled.header<ContainerProps>`
 
 export const StyledText = styled.text`
   font-family: 'Roboto';
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 24px;
   font-weight: 700;
 `;

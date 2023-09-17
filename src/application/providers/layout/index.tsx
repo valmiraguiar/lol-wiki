@@ -1,7 +1,7 @@
-import Header from "../../components/layout/header";
-import { LayoutProviderProps } from "./layout.types";
+import Header from '../../components/layout/header';
+import { LayoutProviderProps } from './layout.types';
 
-const LayoutProvider : React.FC<LayoutProviderProps> = ({ children }) => {
+const LayoutProvider: React.FC<LayoutProviderProps> = ({ children }) => {
   return (
     <>
       <Header />

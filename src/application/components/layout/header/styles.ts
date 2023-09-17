@@ -16,8 +16,8 @@ export const Container = styled.header<ContainerProps>`
 `;
 
 export const StyledText = styled.text`
-  font-family: 'Roboto';
+  font-family: 'Montserrat';
   color: #ffffff;
   font-size: 24px;
-  font-weight: 700;
+  font-weight: 600;
 `;

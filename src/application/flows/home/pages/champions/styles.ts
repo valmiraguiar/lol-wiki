@@ -2,14 +2,12 @@ import { styled } from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  background: gold;
   margin: 32px 64px;
   justify-content: center;
 `;
 
 export const Wrapper = styled.div`
   display: grid;
-  background: blue;
   gap: 2vw;
 
   @media (min-width: 327px) {
@@ -43,7 +41,7 @@ export const TitleContainer = styled.div`
   left: 0rem;
   right: 0rem;
   background: #006680;
-  border-radius: 0px 0px 0px 0px;
+  border-radius: 0px 0px 12px 12px;
 
   @media (min-width: 327px) {
     height: 4.5vh;
@@ -71,4 +69,5 @@ export const Title = styled.text`
 export const StyledImg = styled.img`
   width: 100%;
   height: 100%;
+  border-radius: 12px;
 `;

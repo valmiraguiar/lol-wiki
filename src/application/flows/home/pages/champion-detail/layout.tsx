@@ -12,14 +12,22 @@ const ChampionDetailLayout: React.FC = () => {
 
   useEffect(() => {
     if (itemKey) getChampion(itemKey);
-
     setData(champion ? Object.values(champion)[0] : {});
+
     // eslint-disable-next-line
-  }, [itemKey]);
+  }, [data]);
 
   return (
     <>
-      <h1>Champion Profile - {data?.key}</h1>
+      {data ? (
+        <>
+          <h1>{data.title}</h1>
+          <h1>{data.name}</h1>
+          <h1>{data.lore}</h1>
+        </>
+      ) : (
+        <h1>Error</h1>
+      )}
     </>
   );
 };

@@ -1,4 +1,5 @@
 import { styled } from 'styled-components';
+import { TitleContainerProps, StyleImgProps } from './champions.types';
 
 export const Container = styled.div`
   display: flex;
@@ -26,6 +27,8 @@ export const Wrapper = styled.div`
 export const ItemContainer = styled.div`
   position: relative;
   cursor: pointer;
+  overflow: hidden;
+  border-radius: 12px;
 
   @media (max-width: 327px) {
     width: 32vw;
@@ -33,15 +36,16 @@ export const ItemContainer = styled.div`
   }
 `;
 
-export const TitleContainer = styled.div`
+export const TitleContainer = styled.div<TitleContainerProps>`
   position: absolute;
   align-items: center;
   display: flex;
   bottom: 0rem;
   left: 0rem;
   right: 0rem;
-  background: #006680;
+  background: ${({ hover }) => (hover ? `#006680` : `#002833`)};
   border-radius: 0px 0px 12px 12px;
+  pointer-events: none;
 
   @media (min-width: 327px) {
     height: 4.5vh;
@@ -64,10 +68,15 @@ export const Title = styled.text`
   font-family: 'Lora';
   font-weight: 600;
   font-size: 2.5vh;
+  pointer-events: none;
 `;
 
-export const StyledImg = styled.img`
+export const StyledImg = styled.img<StyleImgProps>`
   width: 100%;
   height: 100%;
   border-radius: 12px;
+  pointer-events: none;
+
+  scale: ${({ hover }) => (hover ? `1.1` : `1`)};
+  transition: all 0.2s linear;
 `;

@@ -77,6 +77,6 @@ export const StyledImg = styled.img<StyleImgProps>`
   border-radius: 12px;
   pointer-events: none;
 
-  scale: ${({ hover }) => (hover ? `1.1` : `1`)};
+  scale: ${({ hover }) => (hover ? `1.05` : `1.1`)};
   transition: all 0.2s linear;
 `;

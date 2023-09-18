@@ -10,7 +10,10 @@ import {
   Wrapper,
 } from './styles';
 
-const ChampionsLayout: React.FC<ChampionsLayoutProps> = ({ championsData }) => {
+const ChampionsLayout: React.FC<ChampionsLayoutProps> = ({
+  championsData,
+  handleItemClick,
+}) => {
   const [hoveredItem, setHoveredItem] = useState<number>();
 
   return (
@@ -20,6 +23,7 @@ const ChampionsLayout: React.FC<ChampionsLayoutProps> = ({ championsData }) => {
           <ItemContainer
             onMouseEnter={() => setHoveredItem(index)}
             onMouseOut={() => setHoveredItem(-1)}
+            onClick={() => handleItemClick(champion[0])}
           >
             <StyledImg
               alt="Champion"

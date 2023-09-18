@@ -5,5 +5,5 @@ export const NAME = {
 
 export const PATH = {
   CHAMPIONS: '/champion/all',
-  CHAMPION_DETAIL: '/champion/:champion_name',
+  CHAMPION_DETAIL: '/champion/:championId',
 };

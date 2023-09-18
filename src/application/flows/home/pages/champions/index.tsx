@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import ChampionsLayout from './layout';
 import useChampions from '../../../../hooks/useChampions';
+import { useNavigate } from 'react-router-dom';
 
 const Champions: React.FC = () => {
   const { champions, getChampionsList, loadingState } = useChampions();
+  const navigate = useNavigate();
 
   useEffect(() => {
     getChampionsList();
@@ -11,7 +13,16 @@ const Champions: React.FC = () => {
     // eslint-disable-next-line
   }, []);
 
-  return <ChampionsLayout championsData={champions ?? []} />;
+  const handleItemClick = (itemKey: string) => {
+    navigate(`/champion/${itemKey.toLowerCase()}`);
+  };
+
+  return (
+    <ChampionsLayout
+      handleItemClick={handleItemClick}
+      championsData={champions ?? []}
+    />
+  );
 };
 
 export default Champions;

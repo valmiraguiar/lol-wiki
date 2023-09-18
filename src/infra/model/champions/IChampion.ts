@@ -4,6 +4,7 @@ export interface IChampion {
   key: string;
   name: string;
   title: string;
+  lore: string;
   tags: string;
   image: ChampionImage;
 }

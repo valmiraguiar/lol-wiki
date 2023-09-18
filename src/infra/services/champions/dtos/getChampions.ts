@@ -6,3 +6,8 @@ export interface FetchChampionsResponseDTO {
   version: string;
   data: IChampion[];
 }
+
+export interface GetChampionResponseDTO {
+  version: string;
+  data: IChampion;
+}

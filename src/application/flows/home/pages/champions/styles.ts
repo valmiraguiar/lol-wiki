@@ -3,7 +3,8 @@ import { TitleContainerProps, StyleImgProps } from './champions.types';
 
 export const Container = styled.div`
   display: flex;
-  margin: 32px 64px;
+  padding: 32px 64px;
+  background: #202a3b;
   justify-content: center;
 `;
 
@@ -48,18 +49,18 @@ export const TitleContainer = styled.div<TitleContainerProps>`
   pointer-events: none;
 
   @media (min-width: 327px) {
-    height: 4.5vh;
-    padding: 1.7vw;
+    height: 4vh;
+    padding: 1vw 4vw;
   }
 
   @media (min-width: 700px) {
-    height: 2.5vh;
+    height: 1.8vh;
     padding: 1.5vw;
   }
 
   @media (min-width: 1024px) {
-    height: 2.5vh;
-    padding: 1.2vw;
+    height: 0.7vw;
+    padding: 2vh 1vw;
   }
 `;
 
@@ -67,7 +68,7 @@ export const Title = styled.text`
   color: #ffffff;
   font-family: 'Lora';
   font-weight: 600;
-  font-size: 2.5vh;
+  font-size: 1.8vh;
   pointer-events: none;
 `;
 

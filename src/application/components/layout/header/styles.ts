@@ -20,4 +20,6 @@ export const StyledText = styled.text`
   color: #ffffff;
   font-size: 24px;
   font-weight: 600;
+
+  cursor: pointer;
 `;

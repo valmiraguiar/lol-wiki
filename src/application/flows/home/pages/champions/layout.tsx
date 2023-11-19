@@ -9,6 +9,7 @@ import {
   TitleContainer,
   Wrapper,
 } from './styles';
+import Spinner from '../../../../components/layout/spinner';
 
 const ChampionsLayout: React.FC<ChampionsLayoutProps> = ({
   championsData,
@@ -18,6 +19,7 @@ const ChampionsLayout: React.FC<ChampionsLayoutProps> = ({
 
   return (
     <Container>
+      <Spinner />
       <Wrapper>
         {Object.entries(championsData).map((champion, index) => (
           <ItemContainer

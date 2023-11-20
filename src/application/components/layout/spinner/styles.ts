@@ -2,8 +2,9 @@ import styled, { css } from 'styled-components';
 import { SpinnerStyleProps } from './spinner.types';
 
 export const SpinnerContainer = styled.div`
-  width: 600px;
-  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const SpinnerStyled = styled.div<SpinnerStyleProps>`

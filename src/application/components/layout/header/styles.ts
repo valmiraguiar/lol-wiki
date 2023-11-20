@@ -15,7 +15,7 @@ export const Container = styled.header<ContainerProps>`
   background: #232323;
 `;
 
-export const StyledText = styled.text`
+export const StyledText = styled.p`
   font-family: 'Montserrat';
   color: #ffffff;
   font-size: 24px;

@@ -19,6 +19,7 @@ const Champions: React.FC = () => {
 
   return (
     <ChampionsLayout
+      loadingState={loadingState}
       handleItemClick={handleItemClick}
       championsData={champions ?? []}
     />

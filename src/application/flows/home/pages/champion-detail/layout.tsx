@@ -8,7 +8,7 @@ import {
   ImgContainer,
   StyledImg,
   Subtitle,
-  Text,
+  StyledText,
   TextContainer,
   Title,
 } from './styles';
@@ -41,7 +41,7 @@ const ChampionDetailLayout: React.FC = () => {
           <TextContainer>
             <Title>{data.name}</Title>
             <Subtitle>{data.title}</Subtitle>
-            <Text>{data.lore}</Text>
+            <StyledText>{data.lore}</StyledText>
           </TextContainer>
         </>
       ) : (

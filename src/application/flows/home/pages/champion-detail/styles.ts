@@ -1,4 +1,4 @@
-import { css, styled } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
@@ -42,21 +42,21 @@ export const TextContainer = styled.div`
   }
 `;
 
-export const Title = styled.text`
+export const Title = styled.p`
   color: white;
   font-size: 5vw;
   font-family: 'Lora';
   font-weight: 600;
 `;
 
-export const Subtitle = styled.text`
+export const Subtitle = styled.p`
   color: white;
   font-size: 3vw;
   font-family: 'Lora';
   font-weight: 400;
 `;
 
-export const Text = styled.text`
+export const StyledText = styled.p`
   color: white;
   font-size: 1.2vw;
   text-align: right;

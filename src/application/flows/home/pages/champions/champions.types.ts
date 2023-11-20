@@ -1,14 +1,16 @@
 import { IChampion } from '../../../../../infra/model/champions/IChampion';
+import { LoadingStateEnum } from '../../../../ts/types/loading';
 
 export interface ChampionsLayoutProps {
   championsData: IChampion[];
   handleItemClick: (itemKey: string) => void;
+  loadingState: LoadingStateEnum;
 }
 
 export interface TitleContainerProps {
-  hover?: boolean;
+  selected?: boolean;
 }
 
 export interface StyleImgProps {
-  hover?: boolean;
+  selected?: boolean;
 }

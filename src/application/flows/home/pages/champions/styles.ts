@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { TitleContainerProps, StyleImgProps } from './champions.types';
 
 export const Container = styled.div`
@@ -6,6 +6,15 @@ export const Container = styled.div`
   padding: 32px 64px;
   background: #202a3b;
   justify-content: center;
+`;
+
+export const LoadingWrapper = styled.div`
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 75vh;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Wrapper = styled.div`
@@ -44,9 +53,12 @@ export const TitleContainer = styled.div<TitleContainerProps>`
   bottom: 0rem;
   left: 0rem;
   right: 0rem;
-  background: ${({ hover }) => (hover ? `#006680` : `#002833`)};
   border-radius: 0px 0px 12px 12px;
   pointer-events: none;
+
+  ${({ selected }) => css`
+    background: ${selected ? '#006680' : '#002833'};
+  `}
 
   @media (min-width: 327px) {
     height: 4vh;
@@ -64,7 +76,7 @@ export const TitleContainer = styled.div<TitleContainerProps>`
   }
 `;
 
-export const Title = styled.text`
+export const Title = styled.p`
   color: #ffffff;
   font-family: 'Lora';
   font-weight: 600;
@@ -77,7 +89,9 @@ export const StyledImg = styled.img<StyleImgProps>`
   height: 100%;
   border-radius: 12px;
   pointer-events: none;
-
-  scale: ${({ hover }) => (hover ? `1.05` : `1.1`)};
   transition: all 0.2s linear;
+
+  ${({ selected }) => css`
+    scale: ${selected ? '1.05' : '1.1'};
+  `}
 `;

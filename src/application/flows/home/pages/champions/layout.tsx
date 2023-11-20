@@ -19,7 +19,7 @@ const ChampionsLayout: React.FC<ChampionsLayoutProps> = ({
 
   return (
     <Container>
-      <Spinner />
+      <Spinner lineColor="#f32111" indicatorColor="#000" />
       <Wrapper>
         {Object.entries(championsData).map((champion, index) => (
           <ItemContainer

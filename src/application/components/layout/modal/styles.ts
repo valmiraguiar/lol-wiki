@@ -25,12 +25,23 @@ export const ModalContainer = styled.div`
   display: flex;
   position: relative;
   flex-direction: column;
-  width: 600px;
-  height: 600px;
   background: #202a3b;
   z-index: 10;
   border-radius: 16px;
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
+
+  width: 400px;
+  height: 600px;
+
+  @media (min-width: 328px) {
+    width: 300px;
+    height: 600px;
+  }
+
+  @media (min-width: 600px) {
+    width: 600px;
+    height: 600px;
+  }
 `;
 
 export const StyledImg = styled(motion.img)`

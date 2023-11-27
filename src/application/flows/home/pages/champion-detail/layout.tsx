@@ -7,47 +7,73 @@ import {
   Container,
   ImgContainer,
   StyledImg,
+  LoadingWrapper,
+  DetailsWrapper,
+  TitleWrapper,
+  Title,
+  Divider,
   Subtitle,
   StyledText,
-  TextContainer,
-  Title,
 } from './styles';
+import { LoadingStateEnum } from '../../../../ts/types/loading';
+import Spinner from '../../../../components/layout/spinner';
 
 const ChampionDetailLayout: React.FC = () => {
   const params = useParams();
   const itemKey = params.championId;
-  const { champion, getChampion } = useChampions();
+  const { champion, getChampion, loadingStateChampionDetail } = useChampions();
   const [data, setData] = useState<IChampion>();
 
-  document.title = data
-    ? `${data.name}, ${data.title} - LOL Wiki`
-    : 'League of Legends Wiki';
-
   useEffect(() => {
-    if (itemKey) getChampion(itemKey);
+    itemKey && getChampion(itemKey);
     setData(champion ? Object.values(champion)[0] : {});
+
+    document.title = data
+      ? `${data.name}, ${data.title} - LOL Wiki`
+      : 'League of Legends Wiki';
 
     // eslint-disable-next-line
   }, [data]);
 
   return (
-    <Container>
-      {data ? (
-        <>
-          <ImgContainer>
-            <StyledImg src={`${DEFAULT_SPLASH_ENDPOINT}/${data.name}_0.jpg`} />
-          </ImgContainer>
-
-          <TextContainer>
-            <Title>{data.name}</Title>
-            <Subtitle>{data.title}</Subtitle>
-            <StyledText>{data.lore}</StyledText>
-          </TextContainer>
-        </>
+    <>
+      {loadingStateChampionDetail === LoadingStateEnum.PENDING ? (
+        <LoadingWrapper>
+          <Spinner indicatorColor="#FFFFFF" />
+        </LoadingWrapper>
       ) : (
-        <h1>Error</h1>
+        <DetailsWrapper>
+          {data ? (
+            <Container>
+              <ImgContainer>
+                <StyledImg
+                  src={`${DEFAULT_SPLASH_ENDPOINT}/${data.name}_0.jpg`}
+                />
+              </ImgContainer>
+
+              <DetailsWrapper>
+                <TitleWrapper>
+                  <Divider />
+                  <Title>{data.name}</Title>
+                  <Divider />
+                </TitleWrapper>
+
+                <Subtitle>{data.title}</Subtitle>
+                <StyledText>{data.lore}</StyledText>
+              </DetailsWrapper>
+
+              {/* <TextContainer>
+                <Title>{data.name}</Title>
+                <Subtitle>{data.title}</Subtitle>
+                <StyledText>{data.lore}</StyledText>
+              </TextContainer> */}
+            </Container>
+          ) : (
+            <h1>Error</h1>
+          )}
+        </DetailsWrapper>
       )}
-    </Container>
+    </>
   );
 };
 

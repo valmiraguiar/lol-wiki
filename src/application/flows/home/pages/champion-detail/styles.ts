@@ -2,18 +2,36 @@ import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  width: 100vw;
+  height: 120vh;
+  min-height: max-content;
   background-image: linear-gradient(#070914, #202a3b);
   height: 100vh;
   align-items: center;
-  padding: 0 6vw;
+`;
+
+export const DetailsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 64px;
+  background: red;
+`;
+
+export const LoadingWrapper = styled.div`
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 75vh;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const ImgContainer = styled.div`
-  width: 100%;
   display: flex;
-  flex-direction: row;
-  background: black;
+  justify-content: center;
   border: 1px transparent rgba(0, 0, 0, 0.01);
 `;
 
@@ -22,29 +40,23 @@ export const StyledImg = styled.img`
   height: 100%;
 `;
 
-export const TextContainer = styled.div`
+export const TitleWrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  height: 30vw;
-  margin: 0px 0px 0px 4vw;
-  overflow: scroll;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+`;
 
-  @media (min-width: 327px) {
-    height: 20vw;
-  }
-
-  @media (min-width: 700px) {
-    height: 20vw;
-  }
-
-  @media (min-width: 1024px) {
-    height: 30vw;
-  }
+export const Divider = styled.div`
+  height: 1px;
+  width: 128px;
+  background: white;
 `;
 
 export const Title = styled.p`
   color: white;
-  font-size: 5vw;
+  font-size: 32px;
   font-family: 'Lora';
   font-weight: 600;
 `;
@@ -59,7 +71,7 @@ export const Subtitle = styled.p`
 export const StyledText = styled.p`
   color: white;
   font-size: 1.2vw;
-  text-align: right;
+  text-align: center;
   justify-content: end;
   margin-top: 12vh;
 `;

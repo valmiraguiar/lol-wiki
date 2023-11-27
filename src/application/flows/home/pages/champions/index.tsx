@@ -2,9 +2,12 @@ import React, { useEffect } from 'react';
 import ChampionsLayout from './layout';
 import useChampions from '../../../../hooks/useChampions';
 import { useNavigate } from 'react-router-dom';
+import Modal from '../../../../components/layout/modal';
+import { DEFAULT_IMAGE_ENDPOINT } from '../../../../../infra/services/api';
+import { IChampion } from '../../../../../infra/model/champions/IChampion';
 
 const Champions: React.FC = () => {
-  const { champions, getChampionsList, loadingState } = useChampions();
+  const { champions, getChampionsList, loadingStateChampions } = useChampions();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -13,14 +16,9 @@ const Champions: React.FC = () => {
     // eslint-disable-next-line
   }, []);
 
-  const handleItemClick = (itemKey: string) => {
-    navigate(`/champion/${itemKey.toLowerCase()}`);
-  };
-
   return (
     <ChampionsLayout
-      loadingState={loadingState}
-      handleItemClick={handleItemClick}
+      loadingState={loadingStateChampions}
       championsData={champions ?? []}
     />
   );

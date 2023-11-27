@@ -22,7 +22,6 @@ export default class ChampionsService {
     championId: string,
   ): Promise<GetChampionResponseDTO> {
     const id = championId.charAt(0).toUpperCase() + championId.slice(1);
-    console.log('endpoint => ', this.endpoints.getChampion(id));
     const { data } = await api.get<GetChampionResponseDTO>(
       this.endpoints.getChampion(id),
     );

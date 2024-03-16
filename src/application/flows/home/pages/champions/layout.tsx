@@ -13,11 +13,11 @@ import {
   TitleContainer,
   Wrapper,
 } from './styles';
-import Spinner from '../../../../components/layout/spinner';
 import { LoadingStateEnum } from '../../../../ts/types/loading';
-import Modal from '../../../../components/layout/modal';
 import { IChampion } from '../../../../../infra/model/champions/IChampion';
 import useChampions from '../../../../hooks/useChampions';
+import ChampionDetailModal from './components/champion-detail-modal';
+import { BarLoader } from 'react-spinners';
 
 const ChampionsLayout: React.FC<ChampionsLayoutProps> = ({
   championsData,
@@ -38,8 +38,7 @@ const ChampionsLayout: React.FC<ChampionsLayoutProps> = ({
     },
   });
 
-  const { champion, getChampion, loadingStateChampionDetail, handleChampion } =
-    useChampions();
+  const { getChampion } = useChampions();
 
   const requestChampion = async (itemKey: string) => {
     const t = await getChampion(itemKey);
@@ -53,7 +52,7 @@ const ChampionsLayout: React.FC<ChampionsLayoutProps> = ({
 
   const renderModal = useCallback(() => {
     return (
-      <Modal
+      <ChampionDetailModal
         imgSrc={modalData.image.full}
         id={modalData.id}
         title={modalData.name}
@@ -75,7 +74,7 @@ const ChampionsLayout: React.FC<ChampionsLayoutProps> = ({
       <Container>
         {loadingState === LoadingStateEnum.PENDING ? (
           <LoadingWrapper>
-            <Spinner indicatorColor="#FFFFFF" />
+            <BarLoader height={32} width={64} />
           </LoadingWrapper>
         ) : (
           <Wrapper>

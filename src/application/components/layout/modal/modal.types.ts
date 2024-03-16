@@ -1,11 +1,6 @@
-import { Dispatch } from 'react';
+import { Dispatch, ReactNode } from 'react';
 
 export interface ModalProps {
-  isLoading?: boolean;
-  imgSrc: string;
-  id: string;
-  title: string;
-  subtitle: string;
-  detail: string;
+  children?: ReactNode;
   setModalIsOpen?: Dispatch<React.SetStateAction<boolean>>;
 }

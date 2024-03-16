@@ -3,7 +3,8 @@ import ChampionsLayout from './layout';
 import useChampions from '../../../../hooks/useChampions';
 
 const Champions: React.FC = () => {
-  const { champions, getChampionsList, loadingStateChampions } = useChampions();
+  const { champions, getChampionsList, getChampion, loadingStateChampions } =
+    useChampions();
 
   useEffect(() => {
     getChampionsList();
@@ -14,6 +15,7 @@ const Champions: React.FC = () => {
     <ChampionsLayout
       loadingState={loadingStateChampions}
       championsData={champions ?? []}
+      handleGetChampion={getChampion}
     />
   );
 };

@@ -15,13 +15,13 @@ import {
 } from './styles';
 import { LoadingStateEnum } from '../../../../ts/types/loading';
 import { IChampion } from '../../../../../infra/model/champions/IChampion';
-import useChampions from '../../../../hooks/useChampions';
 import ChampionDetailModal from './components/champion-detail-modal';
 import { BarLoader } from 'react-spinners';
 
 const ChampionsLayout: React.FC<ChampionsLayoutProps> = ({
   championsData,
   loadingState,
+  handleGetChampion,
 }) => {
   const [hoveredItem, setHoveredItem] = useState<number>(-1);
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
@@ -38,10 +38,8 @@ const ChampionsLayout: React.FC<ChampionsLayoutProps> = ({
     },
   });
 
-  const { getChampion } = useChampions();
-
   const requestChampion = async (itemKey: string) => {
-    const t = await getChampion(itemKey);
+    const t = await handleGetChampion(itemKey);
     t &&
       setModalData({
         ...t,

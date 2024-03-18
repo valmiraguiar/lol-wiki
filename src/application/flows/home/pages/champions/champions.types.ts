@@ -4,6 +4,7 @@ import { LoadingStateEnum } from '../../../../ts/types/loading';
 export interface ChampionsLayoutProps {
   championsData: IChampion[];
   loadingState: LoadingStateEnum;
+  detailChampionLoadingState: LoadingStateEnum;
   handleGetChampion: (championId: string) => Promise<IChampion | undefined>;
 }
 

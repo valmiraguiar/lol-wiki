@@ -1,10 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { ChampionsLayoutProps } from './champions.types';
 import {
-  DEFAULT_IMAGE_ENDPOINT,
-  DEFAULT_SPLASH_ENDPOINT,
-} from '../../../../../infra/services/api';
-import {
   Container,
   ItemContainer,
   LoadingWrapper,
@@ -17,10 +13,12 @@ import { LoadingStateEnum } from '../../../../ts/types/loading';
 import { IChampion } from '../../../../../infra/model/champions/IChampion';
 import ChampionDetailModal from './components/champion-detail-modal';
 import { BarLoader } from 'react-spinners';
+import { DEFAULT_IMAGE_ENDPOINT } from '../../../../../infra/services/constants/constants';
 
 const ChampionsLayout: React.FC<ChampionsLayoutProps> = ({
   championsData,
   loadingState,
+  detailChampionLoadingState,
   handleGetChampion,
 }) => {
   const [hoveredItem, setHoveredItem] = useState<number>(-1);
@@ -43,7 +41,9 @@ const ChampionsLayout: React.FC<ChampionsLayoutProps> = ({
     t &&
       setModalData({
         ...t,
-        image: { full: `${DEFAULT_SPLASH_ENDPOINT}/${t.id}_0.jpg` },
+        image: {
+          full: `${DEFAULT_IMAGE_ENDPOINT}/${t.id}_0.jpg`,
+        },
       });
     setModalIsOpen(true);
   };
@@ -57,6 +57,7 @@ const ChampionsLayout: React.FC<ChampionsLayoutProps> = ({
         subtitle={modalData.title}
         detail={modalData.lore}
         setModalIsOpen={setModalIsOpen}
+        isLoading={detailChampionLoadingState === LoadingStateEnum.PENDING}
       />
     );
   }, [modalData]);

@@ -6,6 +6,7 @@ import { LoadingStateEnum } from '../ts/types/loading';
 const useChampions = () => {
   const [champions, setChampions] = useState<IChampion[]>();
   const [champion, setChampion] = useState<IChampion>();
+  const [championSplash, setChampionSplash] = useState<string>('');
 
   const [loadingStateChampions, setLoadingStateChampions] =
     useState<LoadingStateEnum>(LoadingStateEnum.STAND_BY);
@@ -27,12 +28,31 @@ const useChampions = () => {
     }
   };
 
+  const getChampionSplash = async (championId: string) => {
+    try {
+      setLoadingStateChampionDetail(LoadingStateEnum.PENDING);
+      const response = await service.getChampionSplash(championId);
+      setChampionSplash(response);
+
+      setLoadingStateChampionDetail(LoadingStateEnum.DONE);
+      return response;
+    } catch (error) {
+      console.log('error ', error);
+      setLoadingStateChampionDetail(LoadingStateEnum.ERROR);
+      return undefined;
+    }
+  };
+
   const getChampion = async (championId: string) => {
     try {
       setLoadingStateChampionDetail(LoadingStateEnum.PENDING);
       const response = await service.getChampion(championId);
       setChampion(response.data);
+      Promise.resolve(getChampionSplash(championId));
+
       const championResponse: IChampion = Object.values(response.data)[0];
+
+      console.log('Response data ', championResponse);
 
       setLoadingStateChampionDetail(LoadingStateEnum.DONE);
       return championResponse;
@@ -52,8 +72,10 @@ const useChampions = () => {
     loadingStateChampionDetail,
     getChampionsList,
     getChampion,
+    getChampionSplash,
     champions,
     champion,
+    championSplash,
     handleChampion,
   };
 };

@@ -1,12 +1,9 @@
-import axios from 'axios';
 import api from '../api';
-import fs from 'fs';
 import splashApi from '../splash-api';
 import {
   FetchChampionsResponseDTO,
   GetChampionResponseDTO,
 } from './dtos/getChampions';
-import { DEFAULT_SPLASH_ENDPOINT } from '../constants/constants';
 
 export default class ChampionsService {
   private readonly endpoints = {
@@ -36,7 +33,6 @@ export default class ChampionsService {
 
   public async getChampionSplash(championId: string): Promise<any> {
     const id = championId.charAt(0).toUpperCase() + championId.slice(1);
-    console.log('CHAMPION ID ', id);
     const { data } = await splashApi.get<string>(
       this.endpoints.getChampionSplash(id),
     );

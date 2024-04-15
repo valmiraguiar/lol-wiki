@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { ChampionsLayoutProps } from './champions.types';
 import {
   Container,
@@ -37,15 +37,22 @@ const ChampionsLayout: React.FC<ChampionsLayoutProps> = ({
   });
 
   const requestChampion = async (itemKey: string) => {
-    const t = await handleGetChampion(itemKey);
-    t &&
+    setModalIsOpen(true);
+    const data = await handleGetChampion(itemKey);
+
+    data &&
       setModalData({
-        ...t,
+        ...data,
         image: {
-          full: `${DEFAULT_IMAGE_ENDPOINT}/${t.id}_0.jpg`,
+          full: `${DEFAULT_IMAGE_ENDPOINT}/${data.id}_0.jpg`,
         },
       });
-    setModalIsOpen(true);
+  };
+
+  const handleOnKeyPressed = (keyPressed: string, itemKey: string) => {
+    if (keyPressed === ' ' || keyPressed === 'Enter') {
+      requestChampion(itemKey);
+    }
   };
 
   const renderModal = useCallback(() => {
@@ -57,23 +64,19 @@ const ChampionsLayout: React.FC<ChampionsLayoutProps> = ({
         subtitle={modalData.title}
         detail={modalData.lore}
         setModalIsOpen={setModalIsOpen}
+        isOpen={modalIsOpen}
         isLoading={detailChampionLoadingState === LoadingStateEnum.PENDING}
       />
     );
-  }, [modalData]);
-
-  useEffect(() => {
-    modalIsOpen
-      ? (document.body.style.overflow = 'hidden')
-      : (document.body.style.overflow = 'auto');
-  }, [modalIsOpen]);
+  }, [modalIsOpen, modalData, detailChampionLoadingState]);
 
   return (
     <>
+      {modalIsOpen && renderModal()}
       <Container>
         {loadingState === LoadingStateEnum.PENDING ? (
           <LoadingWrapper>
-            <BarLoader height={32} width={64} />
+            <BarLoader color="#ffffff" />
           </LoadingWrapper>
         ) : (
           <Wrapper>
@@ -84,7 +87,9 @@ const ChampionsLayout: React.FC<ChampionsLayoutProps> = ({
                 onClick={() => {
                   requestChampion(champion[0]);
                 }}
+                onKeyDown={event => handleOnKeyPressed(event.key, champion[0])}
                 key={champion[1].key}
+                tabIndex={0}
               >
                 <StyledImg
                   layoutId={champion[1].id}
@@ -104,8 +109,6 @@ const ChampionsLayout: React.FC<ChampionsLayoutProps> = ({
           </Wrapper>
         )}
       </Container>
-
-      {modalIsOpen && renderModal()}
     </>
   );
 };

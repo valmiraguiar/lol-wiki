@@ -1,17 +1,18 @@
 import React from 'react';
 import {
+  Container,
   ContentContainer,
   LoadingWrapper,
-  ModalContainer,
   StyledImg,
   Subtitle,
   Text,
+  TextContainer,
   Title,
   TitleContainer,
 } from './styles';
 import { ChampionDetailModalProps } from './types';
-import Modal from '../../../../../../components/layout/modal';
 import { BarLoader } from 'react-spinners';
+import Modal from '../../../../../../components/layout/modal';
 
 const ChampionDetailModal: React.FC<ChampionDetailModalProps> = ({
   detail,
@@ -19,29 +20,31 @@ const ChampionDetailModal: React.FC<ChampionDetailModalProps> = ({
   imgSrc,
   subtitle,
   title,
+  isOpen,
   setModalIsOpen,
   isLoading,
 }) => {
   return (
-    <Modal setModalIsOpen={setModalIsOpen}>
-      <ModalContainer>
+    <Modal isOpen={isOpen} setModalIsOpen={setModalIsOpen}>
+      <Container>
         {isLoading ? (
           <LoadingWrapper>
-            <BarLoader height={32} width={64} />
+            <BarLoader color="#ffffff" />
           </LoadingWrapper>
         ) : (
-          <>
-            <StyledImg src={imgSrc} layoutId={id} />
-            <ContentContainer>
+          <ContentContainer key={id}>
+            <StyledImg src={imgSrc} alt={`${id}-${title}-${subtitle}-img`} />
+
+            <TextContainer>
               <TitleContainer>
-                <Title layoutId={`title-${title}`}>{title}</Title>
+                <Title>{title}</Title>
                 <Subtitle>{subtitle}</Subtitle>
               </TitleContainer>
               <Text>{detail}</Text>
-            </ContentContainer>
-          </>
+            </TextContainer>
+          </ContentContainer>
         )}
-      </ModalContainer>
+      </Container>
     </Modal>
   );
 };

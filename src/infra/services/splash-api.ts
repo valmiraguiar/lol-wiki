@@ -7,7 +7,6 @@ const splashApi = axios.create({
 });
 
 splashApi.interceptors.request.use(config => {
-  console.log('CONFIG ', config);
   return config;
 });
 

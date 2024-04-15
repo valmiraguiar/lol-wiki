@@ -1,21 +1,24 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
-export const ModalBackgroundContainer = styled.div`
+export const ModalBackgroundContainer = styled(motion.div)`
+  display: flex;
   position: fixed;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.2);
-  top: 50%;
-  left: 50%;
-  z-index: 99;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(2px);
-  transform: translate(-50%, -50%);
+  z-index: 99;
 `;
 
-export const CenteredContainer = styled.div`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+export const ModalContainer = styled(motion.div)`
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
 `;

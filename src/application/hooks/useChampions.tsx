@@ -52,8 +52,6 @@ const useChampions = () => {
 
       const championResponse: IChampion = Object.values(response.data)[0];
 
-      console.log('Response data ', championResponse);
-
       setLoadingStateChampionDetail(LoadingStateEnum.DONE);
       return championResponse;
     } catch (error) {

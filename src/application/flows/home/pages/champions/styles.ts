@@ -1,11 +1,13 @@
 import styled, { css } from 'styled-components';
 import { TitleContainerProps, StyleImgProps } from './champions.types';
+import { motion } from 'framer-motion';
 
 export const Container = styled.div`
   display: flex;
   padding: 32px 64px;
   background: #202a3b;
   justify-content: center;
+  z-index: 0;
 `;
 
 export const LoadingWrapper = styled.div`
@@ -76,7 +78,7 @@ export const TitleContainer = styled.div<TitleContainerProps>`
   }
 `;
 
-export const Title = styled.p`
+export const Title = styled(motion.span)`
   color: #ffffff;
   font-family: 'Lora';
   font-weight: 600;
@@ -84,7 +86,7 @@ export const Title = styled.p`
   pointer-events: none;
 `;
 
-export const StyledImg = styled.img<StyleImgProps>`
+export const StyledImg = styled(motion.img)<StyleImgProps>`
   width: 100%;
   height: 100%;
   border-radius: 12px;

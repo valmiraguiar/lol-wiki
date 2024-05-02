@@ -3,8 +3,9 @@ import { LoadingStateEnum } from '../../../../ts/types/loading';
 
 export interface ChampionsLayoutProps {
   championsData: IChampion[];
-  handleItemClick: (itemKey: string) => void;
   loadingState: LoadingStateEnum;
+  detailChampionLoadingState: LoadingStateEnum;
+  handleGetChampion: (championId: string) => Promise<IChampion | undefined>;
 }
 
 export interface TitleContainerProps {
@@ -13,4 +14,8 @@ export interface TitleContainerProps {
 
 export interface StyleImgProps {
   selected?: boolean;
+}
+
+export interface WrapperProps {
+  modalIsActive?: boolean;
 }

@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { ChampionsLayoutProps } from './champions.types';
 import {
   Container,
@@ -69,6 +69,12 @@ const ChampionsLayout: React.FC<ChampionsLayoutProps> = ({
       />
     );
   }, [modalIsOpen, modalData, detailChampionLoadingState]);
+
+  useEffect(() => {
+    modalIsOpen
+      ? (document.body.style.overflow = 'hidden')
+      : (document.body.style.overflow = 'auto');
+  }, [modalIsOpen]);
 
   return (
     <>
